@@ -4,7 +4,9 @@ class Board:
         self.board = [[' ' for i in range(3)] for j in range(3)]
     
     def is_valid_move(self, row: int, col: int) -> bool:
-        if (self.board[row][col] == ' '):
+        valid_row = row in [0, 1, 2]
+        valid_col = col in [0, 1, 2]
+        if self.board[row][col] == ' ' and valid_row and valid_col:
             return True
         else:
             return False
