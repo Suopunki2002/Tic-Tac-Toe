@@ -30,15 +30,15 @@ class Board:
         }
     
     def is_valid_position(self, position: int) -> bool:
-        valid_position = position in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        is_valid_position = position in [1, 2, 3, 4, 5, 6, 7, 8, 9]
         coords = self.pos_to_coord[position]
         row = coords[0]; col = coords[1]
-        if valid_position and self.board[row][col] == ' ':
+        if is_valid_position and self.board[row][col] == ' ':
             return True
         else:
             return False
         
-    def update(self, position: int, symbol: str) -> None:
+    def update_position(self, position: int, symbol: str) -> None:
         coords = self.pos_to_coord[position]
         row = coords[0]; col = coords[1]
         self.board[row][col] = symbol

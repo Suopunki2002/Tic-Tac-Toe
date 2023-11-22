@@ -9,7 +9,7 @@ class Game:
         self.game_over = False
         
     def make_move(self, position: int) -> None:
-        self.board.update(position, self.current_player)
+        self.board.update_position(position, self.current_player)
     
     def winner(self) -> str:
         return self.board.check_winner()
