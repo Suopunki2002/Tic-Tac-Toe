@@ -1,37 +1,43 @@
 
 class Board:
     def __init__(self) -> None:
-        self.board = [[' ' for _ in range(3)] for _ in range(3)]
-        self.all_coordinates = [(r, c) for r in range(3) for c in range(3)]
-        self.empty_coordinates = self.all_coordinates
+        self.board = [' ' for _ in range(9)]
+        self.empty_cells = [i for i in range(1, 10)]
     
-    def valid_square(self, coordinates: (int, int)) -> bool:
-        if coordinates not in self.all_coordinates:
-            return False
-        return coordinates in self.empty_coordinates
+    def valid_cell(self, number: int) -> bool:
+        return number in self.empty_cells
     
-    def update_square(self, coordinates: (int, int), symbol: str) -> None:
-        row, col = coordinates
-        self.board[row][col] = symbol
-        self.empty_coordinates.remove(coordinates)
+    def update_cell(self, number: int, symbol: str) -> None:
+        self.board[number-1] = symbol
+        self.empty_cells -= number
         
-    def is_full(self) -> bool:
-        return not self.empty_coordinates
-        
-    def check_winner(self) -> str:
+    def check_winner(self) -> str | None:
+        # Check rows and columns
         for i in range(3):
-            # Check rows
-            if self.board[i][0] == self.board[i][1] == self.board[i][2] != ' ':
-                return self.board[i][0]
-            # Check columns
-            elif self.board[0][i] == self.board[1][i] == self.board[2][i] != ' ':
-                return self.board[0][i]
+            if self.board[i*3] == self.board[i*3+1] == self.board[i*3+2] != ' ':
+                return self.board[i*3]
+            elif self.board[i] == self.board[i+3] == self.board[i+6] != ' ':
+                return self.board[i]
         # Check diagonals
-        if self.board[0][0] == self.board[1][1] == self.board[2][2] != ' ':
-            return self.board[0][0]
-        elif self.board[0][2] == self.board[1][1] == self.board[2][0] != ' ':
-            return self.board[0][2]
-    
+        if self.board[0] == self.board[4] == self.board[8] != ' ':
+            return self.board[0]
+        elif self.board[2] == self.board[4] == self.board[6] != ' ':
+            return self.board[2]
+        
     def check_tie(self) -> bool:
-        return self.is_full() and self.check_winner() is None
+        return not self.empty_cells
     
+    def print_board(self) -> None:
+        cur_board_with_nums = []
+        for i, cell in enumerate(self.board):
+            match cell:
+                case ' ':
+                    cur_board_with_nums += str(i+1)
+                case _:
+                    cur_board_with_nums += cell
+        print(" | ".join(cur_board_with_nums[:3]))
+        print("-" * 9)
+        print(" | ".join(cur_board_with_nums[3:6]))
+        print("-" * 9)
+        print(" | ".join(cur_board_with_nums[6:]))
+        
