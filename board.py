@@ -4,12 +4,12 @@ class Board:
         self.board = [' ' for _ in range(9)]
         self.empty_squares = [i for i in range(1, 10)]
     
-    def valid_square(self, number: int) -> bool:
-        return number in self.empty_squares
+    def valid_square(self, n_of_square: int) -> bool:
+        return n_of_square in self.empty_squares
     
-    def update_square(self, number: int, symbol: str) -> None:
-        self.board[number-1] = symbol
-        self.empty_squares.remove(number)
+    def update_square(self, n_of_square: int, symbol: str) -> None:
+        self.board[n_of_square-1] = symbol
+        self.empty_squares.remove(n_of_square)
         
     def check_winner(self) -> str | None:
         # Check rows and columns
