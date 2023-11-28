@@ -2,14 +2,14 @@
 class Board:
     def __init__(self) -> None:
         self.board = [' ' for _ in range(9)]
-        self.empty_cells = [i for i in range(1, 10)]
+        self.empty_squares = [i for i in range(1, 10)]
     
-    def valid_cell(self, number: int) -> bool:
-        return number in self.empty_cells
+    def valid_square(self, number: int) -> bool:
+        return number in self.empty_squares
     
-    def update_cell(self, number: int, symbol: str) -> None:
+    def update_square(self, number: int, symbol: str) -> None:
         self.board[number-1] = symbol
-        self.empty_cells -= number
+        self.empty_squares.remove(number)
         
     def check_winner(self) -> str | None:
         # Check rows and columns
@@ -25,19 +25,20 @@ class Board:
             return self.board[2]
         
     def check_tie(self) -> bool:
-        return not self.empty_cells
+        return not self.empty_squares
     
     def print_board(self) -> None:
-        cur_board_with_nums = []
-        for i, cell in enumerate(self.board):
-            match cell:
+        current_board = []
+        # Change to the number of the square if the square is empty
+        for i, square in enumerate(self.board):
+            match square:
                 case ' ':
-                    cur_board_with_nums += str(i+1)
+                    current_board += str(i+1)
                 case _:
-                    cur_board_with_nums += cell
-        print(" | ".join(cur_board_with_nums[:3]))
+                    current_board += square
+        print(" | ".join(current_board[:3]))
         print("-" * 9)
-        print(" | ".join(cur_board_with_nums[3:6]))
+        print(" | ".join(current_board[3:6]))
         print("-" * 9)
-        print(" | ".join(cur_board_with_nums[6:]))
+        print(" | ".join(current_board[6:]))
         
