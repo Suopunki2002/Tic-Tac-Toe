@@ -19,10 +19,9 @@ class Board:
             elif self.board[i] == self.board[i+3] == self.board[i+6] != ' ':
                 return self.board[i]
         # Check diagonals
-        if self.board[0] == self.board[4] == self.board[8] != ' ':
-            return self.board[0]
-        elif self.board[2] == self.board[4] == self.board[6] != ' ':
-            return self.board[2]
+        if self.board[0] == self.board[4] == self.board[8] != ' '\
+        or self.board[2] == self.board[4] == self.board[6] != ' ':
+            return self.board[4]
         
     def check_tie(self) -> bool:
         return not self.empty_squares
