@@ -1,8 +1,7 @@
-
 class Board:
     def __init__(self) -> None:
         self.board = [' ' for _ in range(9)]
-        self.empty_squares = [i + 1 for i in range(9)]
+        self.empty_squares = [i for i in range(1, 10)]
     
     def valid_square(self, n_of_square: int) -> bool:
         return n_of_square in self.empty_squares
@@ -26,14 +25,12 @@ class Board:
         return not self.empty_squares
     
     def print_board(self) -> None:
-        current_board = []
-        # Change to the number of the square if the square is empty
-        for i, square in enumerate(self.board):
-            match square:
-                case ' ':
-                    current_board += str(i+1)
-                case _:
-                    current_board += square
+        # Change empty squares to the number of the square
+        current_board = [
+            str(i) if i in self.empty_squares
+            else self.board[i-1]
+            for i in range(1, 10)
+            ]
         print(" | ".join(current_board[:3]))
         print("-" * 9)
         print(" | ".join(current_board[3:6]))
