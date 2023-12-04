@@ -19,7 +19,7 @@ class Game:
         if self.board.check_winner() is not None:
             self.game_over = True
             print(f"\nPlayer {self.player} won!\n")
-        elif self.board.check_tie():
+        elif self.board.is_tie():
             self.game_over = True
             print(f"\nIt's a tie!\n")
         

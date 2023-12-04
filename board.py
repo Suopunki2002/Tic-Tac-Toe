@@ -22,7 +22,7 @@ class Board:
                 return self.board[start]
         return None
         
-    def check_tie(self) -> bool:
+    def is_tie(self) -> bool:
         return not self.empty_squares
     
     def print_board(self) -> None:
