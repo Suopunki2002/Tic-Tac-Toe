@@ -1,3 +1,4 @@
+
 class Board:
     def __init__(self) -> None:
         self.board = [' ' for _ in range(9)]
