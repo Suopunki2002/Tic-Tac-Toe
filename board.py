@@ -26,16 +26,9 @@ class Board:
         return not self.empty_squares
     
     def print_board(self) -> None:
-        # Change empty squares to the number of the square
-        current_board = []
-        for i in range(1, 10):
-            if i in self.empty_squares:
-                current_board.append(str(i))
-            else:
-                current_board.append(self.board[i - 1])
-        print(" | ".join(current_board[:3]))
-        print("-" * 9)
-        print(" | ".join(current_board[3:6]))
-        print("-" * 9)
-        print(" | ".join(current_board[6:]))
+        print("    " + " | ".join(self.board[:3]))
+        print("   " + "-" * 11)
+        print("    " + " | ".join(self.board[3:6]))
+        print("   " + "-" * 11)
+        print("    " + " | ".join(self.board[6:]))
         
