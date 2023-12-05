@@ -2,14 +2,14 @@
 class Board:
     def __init__(self) -> None:
         self.board = [' ' for _ in range(9)]
-        self.empty_squares = [i for i in range(1, 10)]
+        self.empty_squares = [i + 1 for i in range(9)]
     
-    def valid_square(self, n_of_square: int) -> bool:
-        return n_of_square in self.empty_squares
+    def is_valid_square(self, num_of_square: int) -> bool:
+        return num_of_square in self.empty_squares
     
-    def update_square(self, n_of_square: int, symbol: str) -> None:
-        self.board[n_of_square-1] = symbol
-        self.empty_squares.remove(n_of_square)
+    def update_square(self, num_of_square: int, symbol: str) -> None:
+        self.board[num_of_square - 1] = symbol
+        self.empty_squares.remove(num_of_square)
         
     def check_winner(self) -> str | None:
         winning_combinations = [
@@ -27,11 +27,12 @@ class Board:
     
     def print_board(self) -> None:
         # Change empty squares to the number of the square
-        current_board = [
-            str(i) if i in self.empty_squares
-            else self.board[i-1]
-            for i in range(1, 10)
-            ]
+        current_board = []
+        for i in range(1, 10):
+            if i in self.empty_squares:
+                current_board.append(str(i))
+            else:
+                current_board.append(self.board[i - 1])
         print(" | ".join(current_board[:3]))
         print("-" * 9)
         print(" | ".join(current_board[3:6]))
