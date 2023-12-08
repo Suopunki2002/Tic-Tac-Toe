@@ -54,10 +54,8 @@ def play_again_prompt() -> bool:
         try:
             response = input("Do you want to play again? (yes/no): ")
             match response.strip().lower():
-                case "y":   return True
-                case "yes": return True
-                case "n":   return False
-                case "no":  return False
+                case "y" | "yes":   return True
+                case "n" | "no":   return False
                 case _:     raise ValueError
         except ValueError:
             print('Invalid response! Please answer with "yes" or "no".\n')
