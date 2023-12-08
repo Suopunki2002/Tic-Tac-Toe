@@ -1,6 +1,6 @@
 
-from board import Board
 from ai import AI
+from board import Board
 
 
 class Game:
@@ -53,5 +53,6 @@ class Game:
         self.handle_game_over()
         self.switch_player()
         if not self.game_over:
-            chosen_square = AI(self.current_player).random_move(self.board)
+            ai = AI(self.current_player)
+            chosen_square = ai.find_best_move(self.board)
             self.make_move(chosen_square)
