@@ -61,5 +61,5 @@ class Game:
         self.switch_player()
         if not self.game_over:
             ai = AI(self.current_player)
-            chosen_square = ai.find_best_move(self.board)
+            chosen_square = ai.find_best_move_pruning(self.board)
             self.make_move(chosen_square)
