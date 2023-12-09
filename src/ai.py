@@ -1,10 +1,11 @@
 
 from math import inf
 
-from board import Board
+from src.board import Board
 
 
 class AI:
+    
     def __init__(self, ai_symbol: str) -> None:
         self.ai = ai_symbol
         self.human = "X" if ai_symbol == 'O' else 'O'
