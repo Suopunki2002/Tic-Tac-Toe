@@ -1,7 +1,6 @@
 
 from game import Game
 
-
 def main() -> None:
     print("\nWelcome to this tic-tac-toe game!\n"
           "The game works by writing the number (1-9) "
