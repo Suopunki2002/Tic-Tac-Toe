@@ -75,6 +75,18 @@ class AI:
         best_move = -1
         for move in board.empty_squares():
             board.update_square(move, self.ai)
+            score = self.minimax(board, 0, False)
+            board.update_square(move, ' ')
+            if score > best_score:
+                best_score = score
+                best_move = move
+        return best_move
+    
+    def find_best_move_pruning(self, board: Board) -> int:
+        best_score = -inf
+        best_move = -1
+        for move in board.empty_squares():
+            board.update_square(move, self.ai)
             score = self.minimax_pruning(board, 0, -inf, inf, False)
             board.update_square(move, ' ')
             if score > best_score:
