@@ -7,7 +7,7 @@ class Board:
         return [i + 1 for i, square in enumerate(self.board) if square == ' ']
     
     def is_valid_square(self, num_of_square: int) -> bool:
-        return num_of_square in self.empty_squares()
+        return self.board[num_of_square - 1] == ' '
     
     def update_square(self, num_of_square: int, symbol: str) -> None:
         self.board[num_of_square - 1] = symbol
@@ -25,13 +25,3 @@ class Board:
         
     def is_tie(self) -> bool:
         return not self.empty_squares()
-    
-    def print_board(self) -> None:
-        row_1 = self.board[:3]
-        row_2 = self.board[3:6]
-        row_3 = self.board[6:]
-        print("    " + " | ".join(row_1))
-        print("   " + "-" * 11)
-        print("    " + " | ".join(row_2))
-        print("   " + "-" * 11)
-        print("    " + " | ".join(row_3))

@@ -12,9 +12,16 @@ class Game:
     def make_move(self, num_of_square: int) -> None:
         self.board.update_square(num_of_square, self.current_player)
         
-    def print_current_board(self) -> None:
+    def print_board(self) -> None:
+        row_1 = self.board[:3]
+        row_2 = self.board[3:6]
+        row_3 = self.board[6:]
         print("\nCurrent board:\n")
-        self.board.print_board()
+        print("    " + " | ".join(row_1))
+        print("   " + "-" * 11)
+        print("    " + " | ".join(row_2))
+        print("   " + "-" * 11)
+        print("    " + " | ".join(row_3))
         print("\n")
     
     def handle_game_over(self) -> None:
@@ -41,7 +48,7 @@ class Game:
                 print("Invalid input! Please enter a number 1-9.\n")
     
     def player_turn(self) -> None:
-        self.print_current_board()
+        self.print_board()
         self.handle_game_over()
         self.switch_player()
         if not self.game_over:
@@ -49,7 +56,7 @@ class Game:
             self.make_move(chosen_square)
     
     def computer_turn(self) -> None:
-        self.print_current_board()
+        self.print_board()
         self.handle_game_over()
         self.switch_player()
         if not self.game_over:
