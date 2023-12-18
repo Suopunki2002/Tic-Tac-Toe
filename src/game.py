@@ -7,34 +7,33 @@ class Game:
     
     def __init__(self) -> None:
         self.board = Board()
+        self.current_player = 'X'
+        self.other_player = 'O'
         self.game_over = False
-        self.current_player = 'O'
 
     def make_move(self, num_of_square: int) -> None:
         self.board.update_square(num_of_square, self.current_player)
         
     def print_board(self) -> None:
-        row_1 = self.board[:3]
-        row_2 = self.board[3:6]
-        row_3 = self.board[6:]
-        print("\nCurrent board:\n")
-        print("    " + " | ".join(row_1))
-        print("   " + "-" * 11)
-        print("    " + " | ".join(row_2))
-        print("   " + "-" * 11)
-        print("    " + " | ".join(row_3))
-        print("\n")
+        print("Current board:\n")
+        print(" " * 5 + " | ".join(self.board.board[:3]))
+        print(" " * 4 + "-" * 11)
+        print(" " * 5 + " | ".join(self.board.board[3:6]))
+        print(" " * 4 + "-" * 11)
+        print(" " * 5 + " | ".join(self.board.board[6:]) + '\n')
     
     def handle_game_over(self) -> None:
         if self.board.check_winner() is not None:
             self.game_over = True
-            print(f"Player {self.current_player} won!\n")
+            print(f"Player {self.other_player} won!\n")
         elif self.board.is_tie():
             self.game_over = True
             print("It's a tie!\n")
         
     def switch_player(self) -> None:
-        self.current_player = 'X' if self.current_player == 'O' else 'O'
+        tmp = self.current_player
+        self.current_player = self.other_player
+        self.other_player = tmp
         
     def move_input(self) -> int:
         while True:
@@ -51,16 +50,16 @@ class Game:
     def player_turn(self) -> None:
         self.print_board()
         self.handle_game_over()
-        self.switch_player()
         if not self.game_over:
             chosen_square = self.move_input()
             self.make_move(chosen_square)
+            self.switch_player()
     
     def computer_turn(self) -> None:
         self.print_board()
         self.handle_game_over()
-        self.switch_player()
         if not self.game_over:
             ai = AI(self.current_player)
-            chosen_square = ai.find_best_move_pruning(self.board)
+            chosen_square = ai.find_best_move(self.board)
             self.make_move(chosen_square)
+            self.switch_player()
