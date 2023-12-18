@@ -2,12 +2,14 @@
 class Board:
     
     def __init__(self) -> None:
-        self.board = [' ' for _ in range(9)]
+        self.board: list[str] = [' ' for _ in range(9)]
     
     def empty_squares(self) -> list[int]:
         return [i + 1 for i, square in enumerate(self.board) if square == ' ']
     
     def is_valid_square(self, num_of_square: int) -> bool:
+        if num_of_square < 1 or num_of_square > 9:
+            return False
         return self.board[num_of_square - 1] == ' '
     
     def update_square(self, num_of_square: int, symbol: str) -> None:
