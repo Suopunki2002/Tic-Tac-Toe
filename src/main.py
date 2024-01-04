@@ -25,7 +25,7 @@ def main() -> None:
                 else:
                     game.computer_turn()
                 turn_counter += 1
-                
+    
         response = play_again_prompt()
         play_again = response
 
@@ -66,7 +66,6 @@ Welcome to play Tic-tac-toe! Here's how to play:
 3. You win by placing three of your symbols in a row, column, or diagonal.
 
 4. A game can also end in a tie if all of the squares are taken but no one has won.
-
 """
     print(introduction)
 
