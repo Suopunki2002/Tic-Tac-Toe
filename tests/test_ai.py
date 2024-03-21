@@ -4,7 +4,7 @@ from random import randrange
 import unittest
 
 from src.ai import AI
-from src.board import Board
+
 
 
 class TestAIMethods(unittest.TestCase):
