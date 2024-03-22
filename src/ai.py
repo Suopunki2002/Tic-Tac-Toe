@@ -22,8 +22,7 @@ class AI:
         
         if is_maximizing:
             max_eval = -inf
-            possible_positions = game.empty_squares()
-            for position in possible_positions:
+            for position in game.empty_squares():
                 game.board[position] = self.ai
                 eval = self.minimax(game, depth + 1, alpha, beta, False)
                 game.board[position] = ' '
@@ -34,8 +33,7 @@ class AI:
             return max_eval
         else:
             min_eval = inf
-            possible_positions = game.empty_squares()
-            for position in possible_positions:
+            for position in game.empty_squares():
                 game.board[position] = self.human
                 eval = self.minimax(game, depth + 1, alpha, beta, True)
                 game.board[position] = ' '
