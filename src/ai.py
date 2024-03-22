@@ -1,6 +1,7 @@
 
 from math import inf
 
+## If running tests, change to "from src.game import Game"
 from game import Game
 
 
