@@ -41,7 +41,7 @@ def print_title() -> None:
 
 def print_introduction() -> None:
     introduction = """
-Welcome to play Tic-tac-toe! Here's how to play:
+Welcome to Tic-tac-toe! Here's how to play:
 
 1.  This game is played on a 3x3 board like this:
 
@@ -69,13 +69,13 @@ Welcome to play Tic-tac-toe! Here's how to play:
 
 def choose_opponent_prompt() -> int:
     print(
-        "Do you want to play against:\n"
+        "\nChoose your opponent:\n"
         "1) another player\n"
         "2) the computer"
     )
     while True:
         try:
-            response = int(input().strip())
+            response = int(input("\nOpponent: ").strip())
             if response in {1, 2}:
                 return response
             else:
@@ -115,21 +115,23 @@ def move_prompt(game: Game) -> int:
 
 
 def player_turn(game: Game) -> None:
-    print(f"\nPlayer {game.current_player}'s turn.\n")
+    print(f"\nPlayer {game.current_player}'s turn.")
     print_board(game)
     handle_game_over(game)
-    chosen_square = move_prompt(game)
-    game.play(chosen_square)
-    game.switch_player()
+    if not game.game_over:
+        chosen_square = move_prompt(game)
+        game.play(chosen_square)
+        game.switch_player()
 
 
 def ai_turn(game: Game, ai: AI) -> None:
-    print(f"\nPlayer {game.current_player}'s turn.\n")
+    print(f"\nPlayer {game.current_player}'s turn.")
     print_board(game)
     handle_game_over(game)
-    chosen_square = ai.find_best_move(game)
-    game.play(chosen_square)
-    game.switch_player()
+    if not game.game_over:
+        chosen_square = ai.find_best_move(game)
+        game.play(chosen_square)
+        game.switch_player()
 
 
 def play_again_prompt() -> bool:
