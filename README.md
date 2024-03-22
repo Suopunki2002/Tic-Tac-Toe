@@ -1,7 +1,7 @@
 
 # Tic-tac-toe
 Tic-tac-toe CLI game written in Python. You can either play against another
-player or a simple ai based on the [Minimax](https://en.wikipedia.org/wiki/Minimax)-algorithm.
+player or a simple AI based on the [Minimax](https://en.wikipedia.org/wiki/Minimax)-algorithm.
 
 ## Playing the game
 You can play the game by running the main.py file. If you have opened the root
