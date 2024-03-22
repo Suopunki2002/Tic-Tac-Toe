@@ -12,7 +12,7 @@ directory of the project, you can run the game with the following commands:
 - On Linux & Mac:
     ```python3 src/main.py```
 
-The game itself will give rest of the instructions needed to play the game.
+The game itself will give the rest of the instructions needed to play the game.
 
 ## Tests
 If you want to see and run the tests in in the tests directory, you should be
