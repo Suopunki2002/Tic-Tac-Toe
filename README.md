@@ -1,14 +1,15 @@
 
-# Python-Tic-tac-toe
+# Tic-tac-toe
 Tic-tac-toe CLI game written in Python.
 
 ## Playing the game
 You can play the game by running the main.py file. If you have opened the root
 directory of the project, you can run the game with the following commands:
 
-On Windows:
+- On Windows:
     ```py src\main.py```
-On Linux & Mac:
+
+- On Linux & Mac:
     ```python3 src/main.py```
 
 The game itself will give rest of the instructions needed to play the game.
@@ -20,7 +21,8 @@ aware that there is a small bug where you will have to change the
 This will allow the tests but will prevent you from running the game.
 Once you have changed the line, you can run the tests with the commands:
 
-On Windows:
+- On Windows:
     ```py -m unittest discover -s tests```
-On Linux & Mac:
+
+- On Linux & Mac:
     ```python3 -m unittest discover -s tests```
